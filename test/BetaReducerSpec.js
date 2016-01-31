@@ -1,10 +1,10 @@
 "use strict";
 
 var expect = require('expect.js');
-var Evaluator = require('../lib/Evaluator.js').evaluator;
+var BetaReducer = require('../lib/BetaReducer.js').betaReducer;
 var Printer = require('../lib/PrettyPrinter.js').printer;
 
-describe("Evaluator", function () {
+describe("BetaReducer", function () {
 
     it("should betaReduce '1' to '1'", function () {
         var result = betaReduce('1');
@@ -20,7 +20,7 @@ describe("Evaluator", function () {
 
     function betaReduce(expression) {
         console.log("expression : " + expression);
-        var result = Evaluator.betaReduce(expression);
+        var result = BetaReducer.reduce(expression);
         console.log("result : " + JSON.stringify(result, null, 4));
         return Printer.print(result);
     }
