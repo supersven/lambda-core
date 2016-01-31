@@ -4,7 +4,8 @@
   "description": "Lambda Calculus Core",
   "main": "src/Foo.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha",
+    "autotest": "./node_modules/.bin/mocha --watch --colors"
   },
   "directories": {
     "lib": "src"
