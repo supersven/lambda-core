@@ -13,6 +13,11 @@ describe("Desugarer", function () {
         expect(result).to.eql("1")
     });
 
+    it("should leave variables untouched", function () {
+        var result = desugar("a");
+        expect(result).to.eql("a")
+    });
+
     it("should desugar a two parameter lambda expression ('\\xy->1') to two nested lambda expressions ('\\x->\\y->1')", function(){
         var result = desugar("\\xy->1");
         expect(result).to.eql("\\x->\\y->1")
@@ -34,8 +39,8 @@ describe("Desugarer", function () {
     });
 
     it("should desugar applications", function(){
-        var result = desugar("(\\xyz->1)*(\\abc->1)");
-        expect(result).to.eql("(\\x->\\y->\\z->1)*(\\a->\\b->\\c->1)")
+        var result = desugar("(\\xyz->1)*(\\abc->b)");
+        expect(result).to.eql("(\\x->\\y->\\z->1)*(\\a->\\b->\\c->b)")
     });
 });
 
