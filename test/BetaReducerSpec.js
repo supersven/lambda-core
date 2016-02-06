@@ -3,6 +3,7 @@
 var expect = require('expect.js');
 var BetaReducer = require('../lib/BetaReducer.js').betaReducer;
 var Printer = require('../lib/PrettyPrinter.js').printer;
+var Immutable = require('immutable');
 
 describe("BetaReducer", function () {
 
@@ -20,7 +21,7 @@ describe("BetaReducer", function () {
 
     function betaReduce(expression) {
         console.log("expression : " + expression);
-        var result = BetaReducer.reduce(expression);
+        var result = BetaReducer.reduce(Immutable.fromJS(expression));
         console.log("result : " + JSON.stringify(result, null, 4));
         return Printer.print(result);
     }
@@ -88,7 +89,7 @@ describe("BetaReducer", function () {
     });
 
     it.skip("should reduce SKK to I", function () {
-        var result = betaReduce("(\\x->\\y->\\z->((x)*(z))*((y)*(z)))*((\\x->\\y->x)*(\\x->\\y->x))")
+        var result = betaReduce("(\\x->\\y->\\z->((x)*(z))*((y)*(z)))*((\\x->\\y->x)*(\\x->\\y->x))");
 
         expect(result).to.eql("\\z->z");
     })

@@ -16,7 +16,7 @@ describe("Parser", function () {
     function runParser(toBeParsed) {
         console.log("toBeParsed : " + toBeParsed);
 
-        var result = Parser.parse(toBeParsed);
+        var result = Parser.parse(toBeParsed).toJS();
 
         console.log("result : " + JSON.stringify(result));
 

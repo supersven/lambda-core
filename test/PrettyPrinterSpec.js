@@ -2,11 +2,12 @@
 
 var expect = require('expect.js');
 var Printer = require('../lib/PrettyPrinter.js').printer;
+var Immutable = require('immutable');
 
 describe("PrettyPrinter", function () {
 
     it("should print literal '1'", function () {
-        var result = Printer.print(
+        var result = print(
             {type: 'integerLiteral', x: '1'}
         );
 
@@ -14,7 +15,7 @@ describe("PrettyPrinter", function () {
     })
 
     it("should print variable 'a'", function () {
-        var result = Printer.print(
+        var result = print(
             {type: 'variable', x: 'a'}
         );
 
@@ -22,7 +23,7 @@ describe("PrettyPrinter", function () {
     });
 
     it("should print constant lambda expression '\\->1'", function () {
-        var result = Printer.print(
+        var result = print(
             {
                 type: 'lambdaDefinition',
                 parameters: [],
@@ -34,7 +35,7 @@ describe("PrettyPrinter", function () {
     });
 
     it("should print constant lambda expression with parameter '\\x->1'", function () {
-        var result = Printer.print(
+        var result = print(
             {
                 type: 'lambdaDefinition',
                 parameters: ['x'],
@@ -46,7 +47,7 @@ describe("PrettyPrinter", function () {
     });
 
     it("should print nested lambda expression '\\x->\\y->x'", function () {
-        var result = Printer.print(
+        var result = print(
             {
                 type: 'lambdaDefinition',
                 parameters: ['x'],
@@ -62,21 +63,21 @@ describe("PrettyPrinter", function () {
     });
 
     it("should print a lambda expression with two arguments '\\x y->1'", function () {
-        var result = Printer.print(
-            {
-                type: 'lambdaDefinition',
-                parameters: ['x', 'y'],
-                expression: {
-                    type: 'integerLiteral', x: '1'
-                }
-            });
+            var result = print(
+                {
+                    type: 'lambdaDefinition',
+                    parameters: ['x', 'y'],
+                    expression: {
+                        type: 'integerLiteral', x: '1'
+                    }
+                });
 
             expect(result).to.eql("\\x y->1")
         }
     );
 
     it("should print application '(\\x->x) 1'", function () {
-        var result = Printer.print(
+        var result = print(
             {
                 type: 'application',
                 left: {
@@ -90,5 +91,9 @@ describe("PrettyPrinter", function () {
         );
 
         expect(result).to.eql("(\\x->x)*(1)");
-    })
+    });
+
+    function print(json) {
+        return Printer.print(Immutable.fromJS(json));
+    }
 });
