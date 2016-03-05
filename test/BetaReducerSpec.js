@@ -87,4 +87,10 @@ describe("BetaReducer", function () {
 
         expect(result).to.eql("(\\y->1)*(2)");
     });
+
+    it("should betaReduce '\\x->(\\y->y)*(1)' to '\\x->1'", function () {
+        var result = betaReduce("\\x->(\\y->y)*(1)");
+
+        expect(result).to.eql("\\x->1");
+    });
 });
