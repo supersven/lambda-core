@@ -4,7 +4,6 @@ var expect = require('expect.js');
 var Desugarer = require('../lib/Desugarer.js').desugarer;
 var Parser = require('../lib/Parser.js').parser;
 var Printer = require('../lib/PrettyPrinter.js').printer;
-var Immutable = require('immutable');
 
 describe("Desugarer", function () {
 

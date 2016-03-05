@@ -3,7 +3,6 @@
 var expect = require('expect.js');
 var BetaReducer = require('../lib/BetaReducer.js').betaReducer;
 var Printer = require('../lib/PrettyPrinter.js').printer;
-var Immutable = require('immutable');
 
 describe("BetaReducer", function () {
 
