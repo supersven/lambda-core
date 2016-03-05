@@ -21,7 +21,7 @@ describe("BetaReducer", function () {
 
     function betaReduce(expression) {
         console.log("expression : " + expression);
-        var result = BetaReducer.reduce(Immutable.fromJS(expression));
+        var result = BetaReducer.parseAndReduce(expression);
         console.log("result : " + JSON.stringify(result, null, 4));
         return Printer.print(result);
     }
@@ -80,5 +80,11 @@ describe("BetaReducer", function () {
         var result = betaReduce(apply(S, "1"));
 
         expect(result).to.eql("\\g->\\x->" + apply(apply("1", "x"), apply("g", "x")));
+    });
+
+    it("should betaReduce '((\\x->\\y->x)*(1))*(2)' to '(\\y->1)*(2)'", function () {
+        var result = betaReduce("((\\x->\\y->x)*(1))*(2)");
+
+        expect(result).to.eql("(\\y->1)*(2)");
     });
 });
