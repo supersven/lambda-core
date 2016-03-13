@@ -2,7 +2,7 @@
 
 var expect = require('expect.js');
 var Desugarer = require('../lib/Desugarer.js').desugarer;
-var Parser = require('../lib/Parser.js').parser;
+var AntlrParser = require('../lib/AntlrParser').AntlrParser;
 var Printer = require('../lib/PrettyPrinter.js').printer;
 
 describe("Desugarer", function () {
@@ -23,7 +23,7 @@ describe("Desugarer", function () {
     });
 
     function desugar(expression) {
-        var ast = Parser.parse(expression);
+        var ast = AntlrParser.parse(expression);
         console.log(ast.toJSON());
 
         var result = Desugarer.desugar(ast.get("value"));

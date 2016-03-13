@@ -3,12 +3,12 @@
 var expect = require('expect.js');
 var AlphaConverter = require('../lib/AlphaConverter').alphaConverter;
 var Printer = require('../lib/PrettyPrinter').printer;
-var Parser = require('../lib/Parser').parser;
+var AntlrParser = require('../lib/AntlrParser').AntlrParser;
 
 describe("AlphaConverter", function () {
 
     function convert(expression) {
-        var converted = AlphaConverter.convert(Parser.parse(expression).get("value"));
+        var converted = AlphaConverter.convert(AntlrParser.parse(expression).get("value"));
         return Printer.print(converted);
     }
 
