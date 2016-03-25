@@ -12,7 +12,7 @@ describe("PrettyPrinter", function () {
         );
 
         expect(result).to.eql("1");
-    })
+    });
 
     it("should print variable 'a'", function () {
         var result = print(
@@ -90,7 +90,7 @@ describe("PrettyPrinter", function () {
             }
         );
 
-        expect(result).to.eql("(\\x->x)*(1)");
+        expect(result).to.eql("(\\x->x) 1");
     });
 
     function print(json) {

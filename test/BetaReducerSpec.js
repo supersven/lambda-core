@@ -25,40 +25,40 @@ describe("BetaReducer", function () {
         return Printer.print(result);
     }
 
-    it("should betaReduce '(\\x->x)*(1)' to '1'", function () {
-        var result = betaReduce("(\\x->x)*(1)");
+    it("should betaReduce '(\\x->x) 1' to '1'", function () {
+        var result = betaReduce("(\\x->x) 1");
 
         expect(result).to.eql("1");
     });
 
-    it("should betaReduce '(\\x->y)*(1)' to 'y'", function () {
-        var result = betaReduce("(\\x->y)*(1)");
+    it("should betaReduce '(\\x->y) 1' to 'y'", function () {
+        var result = betaReduce("(\\x->y) 1");
 
         expect(result).to.eql("y");
     });
 
-    it("should betaReduce '(\\x->\\y->x)*(1)' to '\\y->1'", function () {
-        var result = betaReduce("(\\x->\\y->x)*(1)");
+    it("should betaReduce '(\\x->\\y->x) 1' to '\\y->1'", function () {
+        var result = betaReduce("(\\x->\\y->x) 1");
 
         expect(result).to.eql("\\y->1");
     });
 
-    it("should betaReduce '(\\x->\\y->\\z->x)*(1)' to '\\y->\\z->1'", function () {
-        var result = betaReduce("(\\x->\\y->\\z->x)*(1)");
+    it("should betaReduce '(\\x->\\y->\\z->x) 1' to '\\y->\\z->1'", function () {
+        var result = betaReduce("(\\x->\\y->\\z->x) 1");
 
         expect(result).to.eql('\\y->\\z->1');
     });
 
-    it("should betaReduce '(\\x->x)*((\\y->y)*(1))' to '1'", function () {
-        var firstStep = betaReduce("(\\x->x)*((\\y->y)*(1))");
+    it("should betaReduce '(\\x->x) (\\y->y) 1' to '1'", function () {
+        var firstStep = betaReduce("(\\x->x)(\\y->y) 1");
         var secondStep = betaReduce(firstStep);
 
-        expect(firstStep).to.eql("(\\y->y)*(1)");
+        expect(firstStep).to.eql("(\\y->y) 1");
         expect(secondStep).to.eql("1");
     });
 
     function apply(left, right) {
-        return "(" + left + ")*(" + right + ")"
+        return "(" + left + ") " + right
     }
     it("should betaReduce the I combinator", function () {
         var I = "\\x->x";
@@ -81,14 +81,14 @@ describe("BetaReducer", function () {
         expect(result).to.eql("\\g->\\x->" + apply(apply("1", "x"), apply("g", "x")));
     });
 
-    it("should betaReduce '((\\x->\\y->x)*(1))*(2)' to '(\\y->1)*(2)'", function () {
-        var result = betaReduce("((\\x->\\y->x)*(1))*(2)");
+    it("should betaReduce '((\\x->\\y->x) 1) 2' to '(\\y->1) 2'", function () {
+        var result = betaReduce("((\\x->\\y->x) 1) 2");
 
-        expect(result).to.eql("(\\y->1)*(2)");
+        expect(result).to.eql("(\\y->1) 2");
     });
 
-    it("should betaReduce '\\x->(\\y->y)*(1)' to '\\x->1'", function () {
-        var result = betaReduce("\\x->(\\y->y)*(1)");
+    it("should betaReduce '\\x->(\\y->y) 1' to '\\x->1'", function () {
+        var result = betaReduce("\\x->(\\y->y) 1");
 
         expect(result).to.eql("\\x->1");
     });

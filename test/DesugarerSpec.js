@@ -38,8 +38,8 @@ describe("Desugarer", function () {
     });
 
     it("should desugar applications", function(){
-        var result = desugar("(\\xyz->1)*(\\abc->b)");
-        expect(result).to.eql("(\\x->\\y->\\z->1)*(\\a->\\b->\\c->b)")
+        var result = desugar("(\\xyz->1) \\abc->b");
+        expect(result).to.eql("(\\x->\\y->\\z->1) \\a->\\b->\\c->b")
     });
 });
 

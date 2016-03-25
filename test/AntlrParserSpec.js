@@ -121,7 +121,7 @@ describe("AntlrParser", function () {
     );
 
     it("should parse application '(\\x->x) 1'", function () {
-        var ast = runParser("(\\x->x)*(1)");
+        var ast = runParser("(\\x->x) 1");
 
         expect(ast).to.eql(
             {

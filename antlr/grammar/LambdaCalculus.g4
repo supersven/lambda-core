@@ -1,7 +1,7 @@
 grammar LambdaCalculus;
 
 expression: application | lambda | variable | integer;
-application: '('expression')*('expression')';
+application: '('expression')' expression;
 lambda: '\\' parameters '->' expression;
 integer: INT;
 variable: VARIABLE;

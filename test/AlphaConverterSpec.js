@@ -37,14 +37,14 @@ describe("AlphaConverter", function () {
     });
 
     it("should alpha convert '(\\x->x)*(\\x->x)' to '(\\x->x)*(\\x1->x1)'", function () {
-        var result = convert("(\\x->x)*(\\x->x)");
+        var result = convert("(\\x->x) \\x->x");
 
-        expect(result).to.eql('(\\x->x)*(\\x1->x1)');
+        expect(result).to.eql('(\\x->x) \\x1->x1');
     });
 
-    it("should alpha convert '\\x->(\\x->x)*(\\x->x)' to '\\x->(\\x1->x1)*(\\x2->x2)'", function () {
-        var result = convert("\\x->(\\x->x)*(\\x->x)");
+    it("should alpha convert '\\x->(\\x->x) \\x->x' to '\\x->(\\x1->x1) \\x2->x2'", function () {
+        var result = convert("\\x->(\\x->x) \\x->x");
 
-        expect(result).to.eql('\\x->(\\x1->x1)*(\\x2->x2)');
+        expect(result).to.eql('\\x->(\\x1->x1) \\x2->x2');
     });
 });

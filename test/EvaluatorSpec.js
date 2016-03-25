@@ -5,14 +5,14 @@ var Evaluator = require("../lib/Evaluator.js").evaluator;
 
 describe("Evaluator", function () {
 
-    it("should evaluate '(\\x y->x)*(1)' to '\\y->1'", function () {
-        var result = Evaluator.eval("(\\x y->x)*(1)");
+    it("should evaluate '(\\x y->x) 1' to '\\y->1'", function () {
+        var result = Evaluator.eval("(\\x y->x) 1");
 
         expect(result).to.eql("\\y->1");
     });
 
-    it("should evaluate '((\\x y->x)*(1))*(2)' to '\\y->1'", function () {
-        var result = Evaluator.eval("((\\x y->x)*(1))*(2)");
+    it("should evaluate '((\\x y->x) 1) 2' to '\\y->1'", function () {
+        var result = Evaluator.eval("((\\x y->x) 1) 2");
 
         expect(result).to.eql("1");
     });
@@ -29,14 +29,14 @@ describe("Evaluator", function () {
         expect(result).to.eql("\\x->x");
     });
 
-    it("should evaluate '(\\x->(\\z->x)*(y))*(1)' to '1'", function () {
-        var result = Evaluator.eval("(\\x->(\\z->x)*(y))*(1)");
+    it("should evaluate '(\\x->(\\z->x) y) 1' to '1'", function () {
+        var result = Evaluator.eval("(\\x->(\\z->x) y) 1");
 
         expect(result).to.eql("1");
     });
 
 // todo - duplicated from BetaReducerSpec
     function apply(left, right) {
-        return "(" + left + ")*(" + right + ")"
+        return "(" + left + ")" + right + ""
     }
 });
