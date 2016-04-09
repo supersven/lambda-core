@@ -2,6 +2,8 @@
   "name": "patricia-lambda-core",
   "version": "0.0.1",
   "description": "Lambda Calculus Core",
+  "author": "Sven Tennie",
+  "license": "BSD-2-Clause",
   "main": "src/Foo.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
@@ -15,7 +17,6 @@
     "Lambda",
     "Calculus"
   ],
-  "author": "Sven Tennie",
   "devDependencies": {
     "chai": "^3.4.1",
     "expect.js": "^0.3.1",
