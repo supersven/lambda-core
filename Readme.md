@@ -1,4 +1,5 @@
 ## Lambda Core
+[![Build Status](https://travis-ci.org/supersven/lambda-core.svg?branch=master)](https://travis-ci.org/supersven/lambda-core)
 
 A library for the untyped lambda calculus.
 
