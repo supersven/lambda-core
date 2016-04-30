@@ -930,17 +930,17 @@ module.exports.AstNodeFactory  = (function () {
 
     var self = {};
 
-    self.IntegerLiteral = function (x) {
+    self.IntegerLiteral = function (value) {
         return Immutable.Map({
             type: "integerLiteral",
-            x: x
+            value: value
         });
     };
 
-    self.Variable = function (x) {
+    self.Variable = function (name) {
         return Immutable.Map({
             type: "variable",
-            x: x
+            name: name
         });
     };
 
@@ -988,7 +988,7 @@ module.exports.betaReducer = function BetaReducer() {
     var self = {};
 
     self.replaceVariableRecursive = function (expression, name, replacement) {
-        if (Helpers.isVariable(expression) && expression.get("x") === name) {
+        if (Helpers.isVariable(expression) && expression.get("name") === name) {
             return replacement;
         }
         if (Helpers.isLambda(expression)) {
@@ -1203,10 +1203,10 @@ module.exports.printer = function PrettyPrinter() {
 
     self.print = function (ast) {
         if (Helpers.isInteger(ast)) {
-            return ast.get("x");
+            return ast.get("value");
         }
         if (Helpers.isVariable(ast)) {
-            return ast.get("x");
+            return ast.get("name");
         }
         if (Helpers.isLambda(ast)) {
             return "\\" + self.printParameters(ast.get("parameters")) + "->" + self.print(ast.get("expression"))
