@@ -8,7 +8,7 @@ describe("PrettyPrinter", function () {
 
     it("should print literal '1'", function () {
         var result = print(
-            {type: 'integerLiteral', x: '1'}
+            {type: 'integerLiteral', value: '1'}
         );
 
         expect(result).to.eql("1");
@@ -16,7 +16,7 @@ describe("PrettyPrinter", function () {
 
     it("should print variable 'a'", function () {
         var result = print(
-            {type: 'variable', x: 'a'}
+            {type: 'variable', name: 'a'}
         );
 
         expect(result).to.eql("a");
@@ -27,7 +27,7 @@ describe("PrettyPrinter", function () {
             {
                 type: 'lambdaDefinition',
                 parameters: [],
-                expression: {type: 'integerLiteral', x: '1'}
+                expression: {type: 'integerLiteral', value: '1'}
             }
         );
 
@@ -39,7 +39,7 @@ describe("PrettyPrinter", function () {
             {
                 type: 'lambdaDefinition',
                 parameters: ['x'],
-                expression: {type: 'integerLiteral', x: '1'}
+                expression: {type: 'integerLiteral', value: '1'}
             }
         );
 
@@ -54,7 +54,7 @@ describe("PrettyPrinter", function () {
                 expression: {
                     type: 'lambdaDefinition',
                     parameters: ['y'],
-                    expression: {type: 'variable', x: 'x'}
+                    expression: {type: 'variable', name: 'x'}
                 }
             }
         );
@@ -68,7 +68,7 @@ describe("PrettyPrinter", function () {
                     type: 'lambdaDefinition',
                     parameters: ['x', 'y'],
                     expression: {
-                        type: 'integerLiteral', x: '1'
+                        type: 'integerLiteral', value: '1'
                     }
                 });
 
@@ -83,10 +83,10 @@ describe("PrettyPrinter", function () {
                 left: {
                     type: 'lambdaDefinition',
                     parameters: ['x'],
-                    expression: {type: 'variable', x: 'x'}
+                    expression: {type: 'variable', name: 'x'}
                 },
 
-                right: {type: 'integerLiteral', x: '1'}
+                right: {type: 'integerLiteral', value: '1'}
             }
         );
 

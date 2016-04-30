@@ -9,7 +9,7 @@ describe("AntlrParser", function () {
         var ast = runParser("1");
 
         expect(ast).to.eql(
-            {type: 'integerLiteral', x: '1'}
+            {type: 'integerLiteral', value: '1'}
         );
     });
 
@@ -28,7 +28,7 @@ describe("AntlrParser", function () {
         var ast = runParser("1234");
 
         expect(ast).to.eql(
-            {type: 'integerLiteral', x: '1234'}
+            {type: 'integerLiteral', value: '1234'}
         );
     });
 
@@ -36,7 +36,7 @@ describe("AntlrParser", function () {
         var ast = runParser("a");
 
         expect(ast).to.eql(
-            {type: 'variable', x: 'a'}
+            {type: 'variable', name: 'a'}
         );
     });
 
@@ -47,7 +47,7 @@ describe("AntlrParser", function () {
             {
                 type: 'lambdaDefinition',
                 parameters: [],
-                expression: {type: 'integerLiteral', x: '1'}
+                expression: {type: 'integerLiteral', value: '1'}
             }
         );
     });
@@ -59,7 +59,7 @@ describe("AntlrParser", function () {
             {
                 type: 'lambdaDefinition',
                 parameters: ['x'],
-                expression: {type: 'integerLiteral', x: '1'}
+                expression: {type: 'integerLiteral', value: '1'}
             }
         );
     });
@@ -71,7 +71,7 @@ describe("AntlrParser", function () {
             {
                 type: 'lambdaDefinition',
                 parameters: ['x'],
-                expression: {type: 'variable', x: 'x'}
+                expression: {type: 'variable', name: 'x'}
             }
         );
     });
@@ -86,7 +86,7 @@ describe("AntlrParser", function () {
                 expression: {
                     type: 'lambdaDefinition',
                     parameters: 'y',
-                    expression: {type: 'integerLiteral', x: '1'}
+                    expression: {type: 'integerLiteral', value: '1'}
                 }
             }
         );
@@ -100,7 +100,7 @@ describe("AntlrParser", function () {
                     type: 'lambdaDefinition',
                     parameters: ['x', 'y'],
                     expression: {
-                        type: 'integerLiteral', x: '1'
+                        type: 'integerLiteral', value: '1'
                     }
                 });
         }
@@ -114,7 +114,7 @@ describe("AntlrParser", function () {
                     type: 'lambdaDefinition',
                     parameters: ['x', 'y'],
                     expression: {
-                        type: 'integerLiteral', x: '1'
+                        type: 'integerLiteral', value: '1'
                     }
                 });
         }
@@ -129,10 +129,10 @@ describe("AntlrParser", function () {
                 left: {
                     type: 'lambdaDefinition',
                     parameters: 'x',
-                    expression: {type: 'variable', x: 'x'}
+                    expression: {type: 'variable', name: 'x'}
                 },
 
-                right: {type: 'integerLiteral', x: '1'}
+                right: {type: 'integerLiteral', value: '1'}
             }
         );
     })
