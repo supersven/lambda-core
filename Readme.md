@@ -16,7 +16,6 @@ The syntax is similar to Haskell's lambda abstractions.
 ```
 
 ## To Do
-1. cleanup names in AST
 1. use AlphaConverter
 1. implement comments
 1. implement visitor.visitErrorNode in AstCreator
