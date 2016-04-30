@@ -3,7 +3,22 @@
 
 A library for the untyped lambda calculus.
 
+It solves expressions with a naive approach as one would by hand. It can simplify expressions stepwise.
+So it's hopefully useful for educational purposes.
+
+Do not use it when you need a fast interpreter - There are much better tools for that!
+
+## Usage
+The syntax is similar to Haskell's lambda abstractions.
+
+```
+
+```
+
 ## To Do
+1. cleanup names in AST
+1. use AlphaConverter
+1. implement comments
 1. implement visitor.visitErrorNode in AstCreator
 1. Extract helper methods for types, parameters, etc.
 1. Eta-Reduction

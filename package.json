@@ -20,7 +20,9 @@
   "directories": {
     "lib": "src"
   },
-  "files": ["dist/lambda-core.js"],
+  "files": [
+    "dist/lambda-core.js"
+  ],
   "keywords": [
     "Lambda",
     "Calculus"
