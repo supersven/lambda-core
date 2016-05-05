@@ -35,6 +35,12 @@ describe("Evaluator", function () {
         expect(result).to.eql("1");
     });
 
+    it.skip("should evaluate '(\\x->\\x->x) 1' to '\\x->x'", function () {
+        var result = Evaluator.eval("(\\x->\\x->x) 1");
+
+        expect(result).to.eql("\\x->x");
+    });
+
 // todo - duplicated from BetaReducerSpec
     function apply(left, right) {
         return "(" + left + ")" + right + ""
