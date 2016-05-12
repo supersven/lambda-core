@@ -14,12 +14,7 @@ describe("AntlrParser", function () {
     });
 
     function runParser(toBeParsed) {
-        console.log("toBeParsed : " + toBeParsed);
-
         var result = AntlrParser.parse(toBeParsed).toJS();
-
-        console.log("result : " + JSON.stringify(result));
-
         expect(result.status).to.be.ok();
         return result.value;
     }

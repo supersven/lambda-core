@@ -19,9 +19,7 @@ describe("BetaReducer", function () {
     });
 
     function betaReduce(expression) {
-        console.log("expression : " + expression);
         var result = BetaReducer.parseAndReduce(expression);
-        console.log("result : " + JSON.stringify(result, null, 4));
         return Printer.print(result);
     }
 

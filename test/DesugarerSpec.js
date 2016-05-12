@@ -24,10 +24,8 @@ describe("Desugarer", function () {
 
     function desugar(expression) {
         var ast = AntlrParser.parse(expression);
-        console.log(ast.toJSON());
 
         var result = Desugarer.desugar(ast.get("value"));
-        console.log(result.toJSON());
 
         return Printer.print(result);
     }

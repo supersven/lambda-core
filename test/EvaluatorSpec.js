@@ -22,7 +22,6 @@ describe("Evaluator", function () {
         var K = "\\x->\\y->x";
 
         var SKK = apply(apply(S,K),K);
-        console.log(SKK);
 
         var result = Evaluator.eval(SKK);
 
