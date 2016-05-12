@@ -2,7 +2,7 @@
 
 var expect = require('expect.js');
 var AlphaConverter = require('../lib/AlphaConverter').alphaConverter;
-var Printer = require('../lib/PrettyPrinter').printer;
+var Printer = require('../lib/IdPrettyPrinter.js').printer;
 var AntlrParser = require('../lib/AntlrParser').AntlrParser;
 
 describe("AlphaConverter", function () {
