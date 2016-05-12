@@ -38,7 +38,7 @@ describe("PrettyPrinter", function () {
         var result = print(
             {
                 type: 'lambdaDefinition',
-                parameters: ['x'],
+                parameters: [{type: 'parameter', name: 'x'}],
                 expression: {type: 'integerLiteral', value: '1'}
             }
         );
@@ -50,10 +50,10 @@ describe("PrettyPrinter", function () {
         var result = print(
             {
                 type: 'lambdaDefinition',
-                parameters: ['x'],
+                parameters: [{type: 'parameter', name: 'x'}],
                 expression: {
                     type: 'lambdaDefinition',
-                    parameters: ['y'],
+                    parameters: [{type: 'parameter', name: 'y'}],
                     expression: {type: 'variable', name: 'x'}
                 }
             }
@@ -66,7 +66,7 @@ describe("PrettyPrinter", function () {
             var result = print(
                 {
                     type: 'lambdaDefinition',
-                    parameters: ['x', 'y'],
+                    parameters: [{type: 'parameter', name: 'x'}, {type: 'parameter', name: 'y'}],
                     expression: {
                         type: 'integerLiteral', value: '1'
                     }
@@ -82,7 +82,7 @@ describe("PrettyPrinter", function () {
                 type: 'application',
                 left: {
                     type: 'lambdaDefinition',
-                    parameters: ['x'],
+                    parameters: [{type: 'parameter', name: 'x'}],
                     expression: {type: 'variable', name: 'x'}
                 },
 
