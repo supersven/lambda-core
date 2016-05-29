@@ -1,9 +1,5 @@
 module.exports = function (grunt) {
-    grunt.loadNpmTasks('grunt-umd');
-    grunt.loadNpmTasks('grunt-package-modules');
-    grunt.loadNpmTasks('grunt-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-browserify');
 
     grunt.initConfig({
