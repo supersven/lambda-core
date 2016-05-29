@@ -9,14 +9,9 @@ So it's hopefully useful for educational purposes.
 Do not use it when you need a fast interpreter - There are much better tools for that!
 
 ## Usage
-The syntax is similar to Haskell's lambda abstractions.
-
-```
-
-```
+The syntax is similar to Haskell's lambda abstractions. See `test/EvaluatorSpec.js` for examples.
 
 ## To Do
-1. use AlphaConverter
 1. implement comments
 1. implement visitor.visitErrorNode in AstCreator
 1. Extract helper methods for types, parameters, etc.
